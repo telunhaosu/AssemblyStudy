@@ -1,20 +1,17 @@
-.model small
-.stack 100h
+assume cs:code
+code segment
+        mov ax, 0ffffh ; 数据不能以字母开头
+        mov ds, ax
+        mov bx, 6
+        mov al, [bx]
+        mov ah, 0
+        
+        mov dx, 0
+        mov cx, 3
+    s:  add dx, ax
+        loop s
 
-.data
-message db 'Hello, World!', '$'
-
-.code
-main proc
-    mov ax, @data
-    mov ds, ax
-
-    mov ah, 09h
-    lea dx, message
-    int 21h
-
-    mov ah, 4Ch
-    int 21h
-main endp
-
-end main
+        mov ax, 4c00h
+        int 21h
+code ends
+end
