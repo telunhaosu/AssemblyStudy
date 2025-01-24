@@ -8,6 +8,7 @@ stack segment
 stack ends
 
 code segment
+start:
 		mov ax, stack
 		mov ss, ax
 		mov sp, 20h		;初始化栈和栈指针
@@ -29,3 +30,4 @@ code segment
 		mov ax, 4c00h
 		int 21h
 code ends
+end start
